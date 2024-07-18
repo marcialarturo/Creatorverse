@@ -1,19 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import {
+  BeakerIcon,
+  PencilIcon,
+  InformationCircleIcon,
+} from '@heroicons/react/24/solid'
+import { FaYoutube, FaTwitter, FaInstagram } from 'react-icons/fa6'
 
 const data = [
   {
     id: 1,
-    name: 'The sky',
+    name: 'The sky1',
     url: 'google.com',
     description:
       'The sky is an unobstructed view upward from the surface of the Earth. It includes the atmosphere and outer space. It may also be considered a place between the ground and outer space, thus distinct from outer space.',
     imageURL:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_over_Munich_02.jpg/1280px-Sky_over_Munich_02.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+      'https://images.unsplash.com/uploads/1412026095116d2b0c90e/3bf33993?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 2,
@@ -22,12 +29,12 @@ const data = [
     description:
       "The ocean is a body of saline water that composes much of a planet's hydrosphere. It covers approximately 71% of the Earth's surface.",
     imageURL:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Oceanic_Nautilus.jpg/1280px-Oceanic_Nautilus.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+      'https://images.unsplash.com/uploads/1412026095116d2b0c90e/3bf33993?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 3,
@@ -36,12 +43,12 @@ const data = [
     description:
       'A mountain is a large landform that rises prominently above its surroundings, generally exhibiting steep slopes, a confined summit area, and considerable local relief.',
     imageURL:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/1280px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+      'https://images.unsplash.com/uploads/1412026095116d2b0c90e/3bf33993?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 4,
@@ -50,12 +57,12 @@ const data = [
     description:
       'A forest is a large area dominated by trees. Hundreds of more precise definitions of forest are used throughout the world, incorporating factors such as tree density, tree height, land use, legal standing, and ecological function.',
     imageURL:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Forest_Hike.jpg/1280px-Forest_Hike.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+      'https://images.unsplash.com/uploads/1412026095116d2b0c90e/3bf33993?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 5,
@@ -65,11 +72,11 @@ const data = [
       'A desert is a barren area of landscape where little precipitation occurs and, consequently, living conditions are hostile for plant and animal life.',
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Desert-foreground.jpg/1280px-Desert-foreground.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 6,
@@ -79,11 +86,11 @@ const data = [
       'A city is a large human settlement. It can be defined as a permanent and densely settled place with administratively defined boundaries whose members work primarily on non-agricultural tasks.',
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/New_York_City_skyline_as_seen_from_New_Jersey.jpg/1280px-New_York_City_skyline_as_seen_from_New_Jersey.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 7,
@@ -93,11 +100,11 @@ const data = [
       'A river is a natural flowing watercourse, usually freshwater, flowing towards an ocean, sea, lake, or another river.',
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/River_Rhine_in_the_Rheingau.jpg/1280px-River_Rhine_in_the_Rheingau.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 8,
@@ -107,11 +114,11 @@ const data = [
       'A lake is an area filled with water, localized in a basin, surrounded by land, apart from any river or other outlet that serves to feed or drain the lake.',
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Lake_Bled_from_the_Mala_Osojnica_hill.jpg/1280px-Lake_Bled_from_the_Mala_Osojnica_hill.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 9,
@@ -121,11 +128,11 @@ const data = [
       'A volcano is a rupture in the crust of a planetary-mass object, such as Earth, that allows hot lava, volcanic ash, and gases to escape from a magma chamber below the surface.',
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Mt_Hood_reflected_in_Mirror_Lake%2C_Oregon.jpg/1280px-Mt_Hood_reflected_in_Mirror_Lake%2C_Oregon.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
   {
     id: 10,
@@ -135,21 +142,69 @@ const data = [
       'A canyon is a deep cleft between escarpments or cliffs resulting from weathering and the erosive activity of a river over geologic timescales.',
     imageURL:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Grand_Canyon_View_from_South_Rim_1.jpg/1280px-Grand_Canyon_View_from_South_Rim_1.jpg',
-    socials: [
-      { youtube: 'http://www.youtube.com' },
-      { twitter: 'http://www.twitter.com' },
-      { instagram: 'http://www.instagram.com' },
-    ],
+    socials: {
+      youtube: 'http://www.youtube.com',
+      twitter: 'http://www.twitter.com',
+      instagram: 'http://www.instagram.com',
+    },
   },
 ]
-
 export default function ShowCreators() {
   return (
-    <div>
-      <h1>All creators</h1>
-      {data.map((post) => (
-        <h2 key={post.id}>{post.name}</h2>
-      ))}
+    <div className="container mx-auto p-4">
+      <div className="flex flex-wrap ">
+        {data.map((post) => (
+          <div className="relative w-full md:w-1/2 px-2 mb-4" key={post.id}>
+            <div
+              className=" p-4 rounded-lg shadow bg-image"
+              style={{
+                backgroundImage: `url(${post.imageURL})`,
+                backgroundColor: '#414040',
+                backgroundBlendMode: 'overlay',
+              }}
+            >
+              <div className="flex justify-between my-3">
+                <h1 className="text-lg font-bold  text-blue-400">
+                  {post.name}
+                </h1>
+                <div className="flex gap-1">
+                  <Link to="/view-creator">
+                    <InformationCircleIcon className="size-4 text-white" />
+                  </Link>
+                  <br />
+                  <PencilIcon className="size-4 text-white justify-end" />
+                </div>
+              </div>
+              <div className="flex items-end gap-1 mt-1">
+                <a
+                  href={post.socials.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaYoutube className="size-4 text-white" />
+                </a>
+                <a
+                  href={post.socials.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaTwitter className="size-4 text-white" />
+                </a>
+                <a
+                  href={post.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram className="size-4 text-white" />
+                </a>
+              </div>
+              <p className="mt-6 text-left text-white text-sm justify-start">
+                {post.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
