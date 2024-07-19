@@ -7,7 +7,8 @@ export default function Navbar() {
     color: isActive ? '#07baff' : 'white',
   })
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="">
+    {/* <nav className="bg-gray-800 p-4"> */}
       <div className="container mx-auto justify-between flex items-center">
         <NavLink to="/" className="text-white font-bold text-2xl">
           Creatorverse

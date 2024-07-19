@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import Navbar from '../common/Navbar'
+import { supabase } from '../../client'
 import { FaYoutube, FaTwitter, FaInstagram } from 'react-icons/fa6'
-
+import { useNavigate } from 'react-router-dom'
 export default function AddCreator() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -11,15 +12,39 @@ export default function AddCreator() {
     twitter: '',
     instagram: '',
   })
+  const [errors, setErrors] = useState({
+    youtube: '',
+    twitter: '',
+    instagram: '',
+  })
+  const validateInput = (name, value) => {
+    let errorMessage = ''
+    if (value.includes('@')) {
+      errorMessage = 'Input should not contain @ symbol.'
+    } else if (value.includes(' ')) {
+      errorMessage = 'Input should not contain spaces.'
+    }
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: errorMessage,
+    }))
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    validateInput(name, value)
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
+    const { error } = await supabase.from('creators').insert([formData])
+    if (error) {
+      console.error(error)
+    } else {
+      navigate('/')
+    }
   }
   return (
     <div className="flex justify-center items-center ">
@@ -111,9 +136,18 @@ export default function AddCreator() {
             name="youtube"
             value={formData.youtube}
             onChange={handleChange}
-            className="w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  "
+            className={
+              errors.youtube
+                ? ' error'
+                : 'w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue'
+            }
             required
           />
+          {errors.youtube && (
+            <p className="error-message mt-[-20px] text-left">
+              {errors.youtube}{' '}
+            </p>
+          )}
         </div>
 
         <div className="mb-4">
@@ -132,9 +166,17 @@ export default function AddCreator() {
             name="twitter"
             value={formData.twitter}
             onChange={handleChange}
-            className="w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  "
-            required
+            className={
+              errors.twitter
+                ? ' error'
+                : 'w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue'
+            }
           />
+          {errors.twitter && (
+            <p className="error-message mt-[-20px] text-left">
+              {errors.twitter}
+            </p>
+          )}
         </div>
 
         <div className="mb-4">
@@ -153,12 +195,21 @@ export default function AddCreator() {
             name="instagram"
             value={formData.instagram}
             onChange={handleChange}
-            className="w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  "
-            required
+            className={
+              errors.instagram
+                ? 'error'
+                : 'w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  '
+            }
           />
+          {errors.instagram && (
+            <p className="error-message mt-[-20px] text-left">
+              {errors.instagram}{' '}
+            </p>
+          )}
         </div>
         <button
           type="submit"
+          disabled={Object.values(errors).some((error) => error)}
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500  "
         >
           Submit

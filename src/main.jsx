@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/" element={<Layout />}>
         <Route index element={<ShowCreators />} />
         <Route path="/add-creator" element={<AddCreator />} />
-        <Route path="/view-creator" element={<ViewCreator />} />
+        <Route path="/view-creator/:id" element={<ViewCreator />} />
         <Route path="/edit/:id" element={<EditCreator />} />
       </Route>
     </Routes>

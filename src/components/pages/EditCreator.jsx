@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { FaYoutube, FaTwitter, FaInstagram } from 'react-icons/fa6'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { supabase } from '../../client'
 
 export default function EditCreator() {
-  const id = useParams()
+  const { id } = useParams()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -12,43 +14,67 @@ export default function EditCreator() {
     twitter: '',
     instagram: '',
   })
+  const [errors, setErrors] = useState({
+    youtube: '',
+    twitter: '',
+    instagram: '',
+  })
+
+  useEffect(() => {
+    const getPost = async () => {
+      const { data, error } = await supabase
+        .from('creators')
+        .select('*')
+        .eq('id', id)
+        .single()
+      if (error) {
+        console.error(error)
+      } else {
+        setFormData({
+          name: data.name || '',
+          image: data.image || '',
+          description: data.description || '',
+          youtube: data.youtube || '',
+          twitter: data.twitter || '',
+          instagram: data.instagram || '',
+        })
+      }
+    }
+    getPost()
+  }, [id])
+
+  const validateInput = (name, value) => {
+    let errorMessage = ''
+    if (value.includes('@')) {
+      errorMessage = 'Input should not contain @ symbol.'
+    } else if (value.includes(' ')) {
+      errorMessage = 'Input should not contain spaces.'
+    }
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: errorMessage,
+    }))
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    validateInput(name, value)
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
-  }
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      // fetch data by id
-      const post = {
-        id: 1,
-        name: 'The sky1',
-        url: 'google.com',
-        description:
-          'The sky is an unobstructed view upward from the surface of the Earth. It includes the atmosphere and outer space. It may also be considered a place between the ground and outer space, thus distinct from outer space.',
-        imageURL:
-          'https://images.unsplash.com/uploads/1412026095116d2b0c90e/3bf33993?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        youtube: 'http://www.youtube.com',
-        twitter: 'http://www.twitter.com',
-        instagram: 'http://www.instagram.com',
-      }
-      setFormData({
-        name: post.name || '',
-        imageURL: post.imageURL || '',
-        description: post.description || '',
-        youtube: post.youtube || '',
-        twitter: post.twitter || '',
-        instagram: post.instagram || '',
-      })
+    const { error } = await supabase
+      .from('creators')
+      .update(formData)
+      .eq('id', id)
+    if (error) {
+      console.log(error)
+    } else {
+      navigate('/')
     }
-    fetchPost()
-  }, [])
+  }
 
   return (
     <div className="flex justify-center items-center ">
@@ -87,7 +113,7 @@ export default function EditCreator() {
             type="text"
             id="image"
             name="image"
-            value={formData.imageURL || ''}
+            value={formData.image || ''}
             onChange={handleChange}
             className="w-full px-2 py-2 border rounded-lg focus:outline-none focus:ring-blue"
             required
@@ -138,9 +164,18 @@ export default function EditCreator() {
             name="youtube"
             value={formData.youtube || ''}
             onChange={handleChange}
-            className="w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  "
+            className={
+              errors.youtube
+                ? 'error'
+                : 'w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue'
+            }
             required
           />
+          {errors.youtube && (
+            <p className="error-message mt-[-20px] text-left">
+              {errors.youtube}{' '}
+            </p>
+          )}
         </div>
 
         <div className="mb-4">
@@ -159,9 +194,17 @@ export default function EditCreator() {
             name="twitter"
             value={formData.twitter || ''}
             onChange={handleChange}
-            className="w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  "
-            required
+            className={
+              errors.twitter
+                ? 'error'
+                : 'w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  '
+            }
           />
+          {errors.twitter && (
+            <p className="error-message mt-[-20px] text-left ">
+              {errors.twitter}{' '}
+            </p>
+          )}
         </div>
 
         <div className="mb-4">
@@ -180,9 +223,15 @@ export default function EditCreator() {
             name="instagram"
             value={formData.instagram || ''}
             onChange={handleChange}
-            className="w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  "
-            required
+            className={
+              errors.instagram
+                ? 'error'
+                : 'w-full px-2 py-3 border rounded-lg focus:outline-none focus:ring-blue  '
+            }
           />
+          {errors.instagram && (
+            <p className="error-message mt-[-20px] text-left "></p>
+          )}
         </div>
         <button
           type="submit"
