@@ -17,7 +17,7 @@ export default function Search({
       />
       <div className="flex gap-2">
         <button
-          disabled={searchTerm}
+          disabled={!searchTerm}
           onClick={handleSearch}
           className=" bg-blue-500 text-white
         px-4 py-2 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500  h-12 "

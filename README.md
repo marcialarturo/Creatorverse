@@ -1,11 +1,70 @@
-# React + Vite
+# WEB103 Prework - *👉🏿 Creatorverse*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Submitted by: ** Albert Marcial**
+Website: https://creatorversy.netlify.app/
+Video Dem: https://youtu.be/wepkcaTswyA
+https://imgur.com/a/CP9d7TE
 
-Currently, two official plugins are available:
+About this web app: **👉🏿A person's top content creators can say a lot about them. Do they prefer lockpicking videos 🔒, casual art streams 🖼️, or hustle-culture TikTokers**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Time spent: **👉🏿 15** hours
 
-heroicons icon list
-https://unpkg.com/browse/@heroicons/react@2.1.5/24/outline/
+## Required Features
+
+The following **required** functionality is completed:
+
+<!-- 👉🏿👉🏿👉🏿 Make sure to check off completed functionality below -->
+- [✓] **A logical component structure in React is used to create the frontend of the app**
+- [✓] **At least five content creators are displayed on the homepage of the app**
+- [✓] **Each content creator item includes their name, a link to their channel/page, and a short description of their content**
+- [✓] **API calls use the async/await design pattern via Axios or fetch()**
+- [✓] **Clicking on a content creator item takes the user to their details page, which includes their name, url, and description**
+- [✓] **Each content creator has their own unique URL**
+- [✓] **The user can edit a content creator to change their name, url, or description**
+- [✓] **The user can delete a content creator**
+- [✓] **The user can add a new content creator by entering a name, url, or description and then it is displayed on the homepage**
+
+The following **optional** features are implemented:
+
+- [✓] Picocss is used to style HTML elements
+-[✓] The content creator items are displayed in a creative format, like cards instead of a list
+- [✓] An image of each content creator is shown on their content creator card
+
+The following **additional** features are implemented:
+
+* [ ] List anything else that you added to improve the site's functionality!
+- [✓] Add state to navbar to show active page
+- [✓] Add frontend to the `Add Creator Forms`
+- [✓] Search post by tittle or description keys
+- [✓] Added heroicons icon list https://unpkg.com/browse/@heroicons/react@2.1.5/24/outline/
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented required features:
+
+👉🏿<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<!-- Replace this with whatever GIF tool you used! -->
+GIF created with ...  👉🏿 GIF tool here
+<!-- Recommended tools:
+[Kap](https://getkap.co/) for macOS
+[ScreenToGif](https://www.screentogif.com/) for Windows
+[peek](https://github.com/phw/peek) for Linux. -->
+
+## Notes
+
+Describe any challenges encountered while building the app or any additional context you'd like to add.
+
+## License
+
+Copyright [👉🏿 yyyy] [👉🏿 marcial
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+> http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language govern2ing permissions and limitations under the License.
+
+
+
+

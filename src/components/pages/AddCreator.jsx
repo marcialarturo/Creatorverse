@@ -24,6 +24,7 @@ export default function AddCreator() {
     } else if (value.includes(' ')) {
       errorMessage = 'Input should not contain spaces.'
     }
+    console.log('🚀 ~ AddCreator ~ errors:', errors)
 
     setErrors((prevErrors) => ({
       ...prevErrors,
@@ -33,7 +34,9 @@ export default function AddCreator() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    validateInput(name, value)
+    if (name === 'youtube' || name === 'instagram' || name === 'twitter') {
+      validateInput(name, value)
+    }
     setFormData({ ...formData, [name]: value })
   }
 
