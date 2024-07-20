@@ -1,9 +1,9 @@
 # WEB103 Prework - *👉🏿 Creatorverse*
 
-Submitted by: ** Albert Marcial**
-Website: https://creatorversy.netlify.app/
-Video Dem: https://youtu.be/wepkcaTswyA
-https://imgur.com/a/CP9d7TE
+- Submitted by: ** Albert Marcial**
+- Website: https://creatorversy.netlify.app/
+- Video Dem: https://youtu.be/wepkcaTswyA
+- https://imgur.com/a/CP9d7TE
 
 About this web app: **👉🏿A person's top content creators can say a lot about them. Do they prefer lockpicking videos 🔒, casual art streams 🖼️, or hustle-culture TikTokers**
 
